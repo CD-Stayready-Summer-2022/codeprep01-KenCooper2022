@@ -1,5 +1,10 @@
 package com.codedifferently.problems;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
+
 public class Problem03 {
     /**
      * You will be given an integer called number and an array called possibleFamilyMembers
@@ -18,6 +23,34 @@ public class Problem03 {
      * @return
      */
     public Integer[] numberFamily(Integer number, Integer[] possibleFamilyMembers){
-        return null;
+      List familyLIst = Arrays.asList(possibleFamilyMembers);// had to assign it a list not as an arralyist
+        ArrayList<Integer>output=  new ArrayList<>();
+    // all round prety straight forward
+        if(familyLIst.contains(number)){
+            output.add(number);
+        }
+        int decrementIndex = 1;
+        while (true){
+            if(familyLIst.contains(number-decrementIndex)){
+                output.add(0,number-decrementIndex);
+            }else{
+                break;
+            }
+            decrementIndex++;
+        }
+        int  incrementIndex =1;
+        while(true){
+            if(familyLIst.contains(number+incrementIndex)){
+                output.add(number+incrementIndex);
+            }else{
+                break;
+            }
+            incrementIndex++;
+        }
+   Integer temp[] = familyLIst.toArray(new Integer[familyLIst.size()]) ;// had trouble converting the arraylist to an array could have used more specific instructiosn for that
+                                                                        // but overall good  straight forward instructions
+
+        return temp;
+
     }
 }
